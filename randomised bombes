@@ -1,0 +1,16 @@
+import random
+
+def create_board(rows, cols, max_mines):
+    num_mines = random.randint(1, max_mines)
+    board = [[0] * cols for _ in range(rows)]
+    for _ in range(num_mines):
+        row, col = random.randint(0, rows - 1), random.randint(0, cols - 1)
+        while board[row][col] == -1:
+            row, col = random.randint(0, rows - 1), random.randint(0, cols - 1)
+        board[row][col] = -1
+    return board
+
+# Utilisation :
+rows, cols = 10, 10
+max_mines = 10
+board = create_board(rows, cols, max_mines)
